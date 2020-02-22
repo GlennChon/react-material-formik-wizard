@@ -12,20 +12,6 @@ npm install --save react-material-formik-wizard
 
 ## Usage
 
-```jsx
-import React, { Component } from 'react'
-
-import MyComponent from 'react-material-formik-wizard'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
-```
-
 ## License
 
 MIT © [GlennChon](https://github.com/GlennChon)
