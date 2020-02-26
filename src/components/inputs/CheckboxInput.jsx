@@ -6,7 +6,7 @@ import {
   FormControlLabel,
   FormHelperText,
   Checkbox
-} from "../../../../example/src/steps/node_modules/@material-ui/core";
+} from "@material-ui/core";
 import PropTypes from "prop-types";
 
 const CheckboxInput = ({

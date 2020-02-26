@@ -35,12 +35,12 @@ export default {
       include: ["**/*.svg", "**/*.wasm"]
     }),
     svgr(),
+    resolve(),
+    commonjs(),
     babel({
       exclude: "node_modules/**",
       plugins: ["external-helpers"]
     }),
-    resolve(),
-    commonjs(),
     uglify()
   ]
 };

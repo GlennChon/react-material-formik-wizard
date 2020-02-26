@@ -42,6 +42,9 @@
     "yup": "^0.28.1"
   },
   "devDependencies": {
+    "@material-ui/core": "^4.9.4",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.8.2",
     "@svgr/rollup": "^2.4.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
@@ -58,6 +61,7 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
+    "formik": "^2.1.4",
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -70,10 +74,6 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-uglify": "^6.0.4",
     "rollup-plugin-url": "^1.4.0",
-    "formik": "^2.1.4",
-    "@material-ui/core": "^4.9.4",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/styles": "^4.8.2",
     "yup": "^0.28.1"
   },
   "files": [

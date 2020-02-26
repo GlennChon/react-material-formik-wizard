@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import {
-  Select,
-  InputLabel,
-  FormHelperText
-} from "../../../../example/src/steps/node_modules/@material-ui/core";
+import { Select, InputLabel, FormHelperText } from "@material-ui/core";
 
 const SelectInput = ({
   type,

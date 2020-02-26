@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
-import { Stepper, Step, StepLabel, Chip, Container } from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { Container } from "@material-ui/core";
 import MinimalProgressBar from "./MinimalProgressBar";
 import StepProgressBar from "./StepProgressBar";
 //TODO better handle responsive progress bar for

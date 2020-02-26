@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 
-import { TextField } from "../../../../example/src/steps/node_modules/@material-ui/core";
+import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 

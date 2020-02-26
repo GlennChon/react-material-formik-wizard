@@ -1,2 +1,2 @@
-export { default as FormWizard } from "./components/wizard/FormWizard";
-export { default as FormItem } from "./components/inputs/FormItem";
+export { default as FormWizard } from "./FormWizard";
+export { default as FormItem } from "./FormItem";

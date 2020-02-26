@@ -1,15 +1,15 @@
 /* eslint-disable handle-callback-err */
 import React from "react";
-import { useField } from "../../../../example/src/steps/node_modules/formik";
+import { useField } from "formik";
 import PropTypes from "prop-types";
 
 // input components
-import { FormControl } from "../../../../example/src/steps/node_modules/@material-ui/core";
-import TextInput from "./textInput";
-import TextAreaInput from "./textAreaInput";
-import DynamicTextInput from "./DynamicTextInput";
-import SelectInput from "./selectInput";
-import CheckboxInput from "./CheckboxInput";
+import { FormControl } from "@material-ui/core";
+import TextInput from "./components/inputs/textInput";
+import TextAreaInput from "./components/inputs/textAreaInput";
+import DynamicTextInput from "./components/inputs/DynamicTextInput";
+import SelectInput from "./components/inputs/selectInput";
+import CheckboxInput from "./components/inputs/CheckboxInput";
 
 import { makeStyles } from "@material-ui/core/styles";
 

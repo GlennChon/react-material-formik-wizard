@@ -13,7 +13,7 @@ import {
   Menu,
   MenuItem,
   Typography
-} from "../../../../example/src/steps/node_modules/@material-ui/core";
+} from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Add, Clear, Done, MoreHoriz } from "@material-ui/icons";
