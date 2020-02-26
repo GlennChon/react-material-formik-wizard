@@ -5,9 +5,9 @@
   "author": "GlennChon",
   "license": "MIT",
   "repository": "GlennChon/react-material-formik-wizard",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "private": false,
   "engines": {
     "node": ">=8",
     "npm": ">=5"
@@ -34,7 +34,11 @@
     "prop-types": "^15.5.4",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
-    "material-ui": "^0.18.3"
+    "formik": "^2.1.4",
+    "@material-ui/core": "^4.9.4",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.8.2",
+    "yup": "^0.28.1"
   },
   "devDependencies": {
     "@svgr/rollup": "^2.4.1",
@@ -64,9 +68,15 @@
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-uglify": "^6.0.4",
-    "rollup-plugin-url": "^1.4.0"
+    "rollup-plugin-url": "^1.4.0",
+    "formik": "^2.1.4",
+    "@material-ui/core": "^4.9.4",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.8.2",
+    "yup": "^0.28.1"
   },
   "files": [
-    "dist"
-  ]
+    "./dist"
+  ],
+  "dependencies": {}
 }
