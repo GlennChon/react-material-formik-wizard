@@ -12,15 +12,17 @@ import pkg from "./package.json";
 const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, ".min.js");
 
 export default {
-  input: "./src/index.js",
+  input: "src/index.js",
   output: [
     {
       file: minifyExtension(pkg.main),
-      format: "cjs"
+      format: "cjs",
+      sourcemap: true
     },
     {
       file: pkg.module,
-      format: "es"
+      format: "es",
+      sourcemap: true
     }
   ],
   plugins: [
