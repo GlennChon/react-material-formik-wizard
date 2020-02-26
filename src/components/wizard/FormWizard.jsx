@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ChoiceDialog from "./ChoiceDialog";
 import { Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import ProgressBar from "./ProgressBar";
-import ResponsiveCard from "./ResponsiveCard";
+
 import Success from "./Success";
+import ProgressBar from "./ProgressBar";
+import ChoiceDialog from "./ChoiceDialog";
+import ResponsiveCard from "./ResponsiveCard";
 
 import PropTypes from "prop-types";
 // TODO: Maybe implement a prompt when user navigates away from unsaved form?
