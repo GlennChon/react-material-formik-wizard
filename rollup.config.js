@@ -1,3 +1,5 @@
+import react from "react";
+import reactDom from "react-dom";
 import babel from "rollup-plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
@@ -5,17 +7,14 @@ import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
 import svgr from "@svgr/rollup";
-import { uglify } from "rollup-plugin-uglify";
 
 import pkg from "./package.json";
-
-const minifyExtension = pathToFile => pathToFile.replace(/\.js$/, ".min.js");
 
 export default {
   input: "src/index.js",
   output: [
     {
-      file: minifyExtension(pkg.main),
+      file: pkg.main,
       format: "cjs",
       sourcemap: true
     },
@@ -26,6 +25,7 @@ export default {
     }
   ],
   plugins: [
+    resolve(),
     external(),
     postcss({
       modules: true
@@ -35,12 +35,17 @@ export default {
       include: ["**/*.svg", "**/*.wasm"]
     }),
     svgr(),
-    resolve(),
-    commonjs(),
+    commonjs({
+      include: "node_modules/**",
+      extensions: [".js", ".jsx"],
+      namedExports: {
+        react: Object.keys(react),
+        "react-dom": Object.keys(reactDom)
+      }
+    }),
     babel({
       exclude: "node_modules/**",
       plugins: ["external-helpers"]
-    }),
-    uglify()
+    })
   ]
 };

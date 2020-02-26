@@ -9,7 +9,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "react-material-formik-wizard": "file:.."
+    "react-material-formik-wizard": "git+https://github.com/GlennChon/react-material-formik-wizard.git#master"
   },
   "scripts": {
     "start": "react-scripts start",

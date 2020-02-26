@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("xl")]: {}
   }
 }));
+
 const FormWizard = ({
   formComponents,
   doSubmit,

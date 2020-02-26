@@ -8,7 +8,6 @@ import {
   CardMedia,
   CardContent
 } from "@material-ui/core";
-import Image from "material-ui-image";
 
 const Review = props => {
   const [isSubmitting, setSubmitting] = useState(false);
@@ -51,9 +50,7 @@ const Review = props => {
               Taste Profile
             </Typography>
           </Grid>
-          <Grid item xs={12}>
-            <ChipArray chipData={props.values.taste_profile} />
-          </Grid>
+          <Grid item xs={12}></Grid>
           <Grid item xs={12}>
             <Typography
               variant="h5"

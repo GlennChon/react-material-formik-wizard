@@ -1,5 +1,5 @@
 import React from "react";
-import FormWizard from "./forms/wizard/FormWizard";
+import { FormWizard } from "react-material-formik-wizard";
 
 import RecipeStep from "./steps/RecipeStep";
 import AboutStep from "./steps/AboutStep";
@@ -7,9 +7,7 @@ import DetailStep from "./steps/DetailStep";
 import DisplayStep from "./steps/DisplayStep";
 import Review from "./steps/Review";
 
-import { FormWizard } from "react-material-formik-wizard";
-
-export const App = ({ user }) => {
+const App = () => {
   const steps = [
     {
       component: RecipeStep,
@@ -53,3 +51,5 @@ export const App = ({ user }) => {
     </React.Fragment>
   );
 };
+
+export default App;
