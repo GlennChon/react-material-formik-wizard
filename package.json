@@ -5,8 +5,9 @@
   "author": "GlennChon",
   "license": "MIT",
   "repository": "GlennChon/react-material-formik-wizard",
-  "main": "./dist/index.js",
-  "module": "./dist/index.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "jsnext:main": "dist/index.es.js",
   "private": false,
   "engines": {
     "node": ">=8",
@@ -76,7 +77,7 @@
     "yup": "^0.28.1"
   },
   "files": [
-    "./dist"
+    "dist"
   ],
   "dependencies": {}
 }
