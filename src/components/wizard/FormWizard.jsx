@@ -5,7 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import ProgressBar from "./ProgressBar";
 import ResponsiveCard from "./ResponsiveCard";
 import Success from "./Success";
-//TODO: Maybe implement a prompt when user navigates away from unsaved form?
+
+import PropTypes from "prop-types";
+// TODO: Maybe implement a prompt when user navigates away from unsaved form?
 
 const useStyles = makeStyles(theme => ({
   formContainer: {
@@ -63,7 +65,6 @@ function FormWizard({
   const saveDraft = () => {
     let formDraft = JSON.stringify([currentStep, formState]);
     sessionStorage.setItem("recipe_draft", formDraft);
-    return;
   };
   const next = values => {
     setFormState(prevState => {
@@ -83,34 +84,31 @@ function FormWizard({
 
   const handleSubmit = () => {
     // if user is unregistered
-    //cache formState as draft
+    // cache formState as draft
     // TODO: accept external handler and optional value to check instead of hardcoded author check
 
     if (formState.author === "Unregistered") {
       console.log("User is unregistered, saving draft");
       saveDraft();
-      //test, remove below after testing
+      // test, remove below after testing
       setSubmitSuccess(true);
-      return;
-      //reroute to register
+
+      // reroute to register
     } else {
       doSubmit(formState);
       setCurrentStep(formComponents.length);
       setSubmitSuccess(true);
-      return;
     }
   };
 
-  //Modal
+  // Modal
   const handlePositive = () => {
     setOpenDialog(false);
     setLoadDraftData(true);
-    return;
   };
 
   const handleNegative = () => {
     setOpenDialog(false);
-    return;
   };
 
   const checkDraft = () => {
@@ -120,7 +118,6 @@ function FormWizard({
     } else {
       setOpenDialog(false);
     }
-    return;
   };
 
   // Display forms
@@ -157,7 +154,7 @@ function FormWizard({
       {displayProgress && (
         <ProgressBar steps={[...formComponents]} currentStep={currentStep} />
       )}
-      {/*classes.formContainer*/}
+      {/* classes.formContainer */}
       {submitSuccess ? (
         <Success
           title={successTitle}
@@ -171,5 +168,15 @@ function FormWizard({
     </Container>
   );
 }
+
+FormWizard.propTypes = {
+  formComponents: PropTypes.object.isRequired,
+  doSubmit: PropTypes.func.isRequired,
+  displayProgress: PropTypes.bool.isRequired,
+  successTitle: PropTypes.string.isRequired,
+  successTitleComponent: PropTypes.string.isRequired,
+  successMessage: PropTypes.string.isRequired,
+  successMessageComponent: PropTypes.string.isRequired
+};
 
 export default FormWizard;

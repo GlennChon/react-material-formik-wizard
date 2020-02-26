@@ -53,4 +53,3 @@ export const App = ({ user }) => {
     </React.Fragment>
   );
 };
-export default Home;

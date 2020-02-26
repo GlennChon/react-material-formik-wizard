@@ -1,5 +1,15 @@
 {
   "env": {
     "jest": true
+  },
+  "rules": {
+    // don't force es6 functions to include space before paren
+    "space-before-function-paren": 0,
+    // require semicolons
+    "semi": [2, "always"],
+    // use double quotes
+    "quotes": ["error", "double"],
+    // allow specifying true explicitly for boolean props
+    "react/jsx-boolean-value": 0
   }
 }
