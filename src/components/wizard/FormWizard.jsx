@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("xl")]: {}
   }
 }));
-function FormWizard({
+const FormWizard = ({
   formComponents,
   doSubmit,
   displayProgress = true,
@@ -31,7 +31,7 @@ function FormWizard({
   successTitleComponent,
   successMessage,
   successMessageComponent
-}) {
+}) => {
   // form
   const [formState, setFormState] = useState({});
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -168,7 +168,7 @@ function FormWizard({
       )}
     </Container>
   );
-}
+};
 
 FormWizard.propTypes = {
   formComponents: PropTypes.object.isRequired,

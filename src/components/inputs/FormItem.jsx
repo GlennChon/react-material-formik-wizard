@@ -37,8 +37,7 @@ const FormInput = props => {
       return TextInput(props);
   }
 };
-
-function FormItem({ error, touched, variant = "outlined", ...props }) {
+const FormItem = ({ error, touched, variant = "outlined", ...props }) => {
   const [field, meta] = useField(props);
   const classes = useStyles();
   return (
@@ -62,7 +61,7 @@ function FormItem({ error, touched, variant = "outlined", ...props }) {
       />
     </FormControl>
   );
-}
+};
 FormItem.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
