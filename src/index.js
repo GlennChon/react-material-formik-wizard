@@ -1,3 +1,2 @@
-export { default as FormWizard } from "./FormWizard";
-export { React } from "react";
-export { default as FormItem } from "./FormItem";
+export { FormWizard } from "./lib/FormWizard";
+export { FormItem } from "./lib/FormItem";

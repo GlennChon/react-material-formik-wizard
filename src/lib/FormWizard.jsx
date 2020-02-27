@@ -1,11 +1,12 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from "react";
 import { Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Success from "./components/wizard/Success";
-import ProgressBar from "./components/wizard/ProgressBar";
-import ChoiceDialog from "./components/wizard/ChoiceDialog";
-import ResponsiveCard from "./components/wizard/ResponsiveCard";
+import Success from "./wizard/Success";
+import ProgressBar from "./wizard/ProgressBar";
+import ChoiceDialog from "./wizard/ChoiceDialog";
+import ResponsiveCard from "./wizard/ResponsiveCard";
 
 import PropTypes from "prop-types";
 // TODO: Maybe implement a prompt when user navigates away from unsaved form?
@@ -24,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const FormWizard = ({
+export function FormWizard({
   formComponents,
   doSubmit,
   displayProgress = true,
@@ -32,7 +33,7 @@ const FormWizard = ({
   successTitleComponent,
   successMessage,
   successMessageComponent
-}) => {
+}) {
   // form
   const [formState, setFormState] = useState({});
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -132,7 +133,7 @@ const FormWizard = ({
     };
 
     return (
-      <Grid container direction="column" spacing={3}>
+      <Grid container direction={"column"} spacing={3}>
         {React.createElement(formComponents[currentStep].component, {
           ...stepProps
         })}
@@ -144,11 +145,11 @@ const FormWizard = ({
     <Container className={classes.formContainer}>
       <ChoiceDialog
         open={openDialog}
-        modalHeader="Unsubmitted Draft"
-        messageHeader="Draft Available"
-        message="A draft has been found, would you like to load it?"
-        positiveBtnText="Load"
-        negativeBtnText="Delete"
+        modalHeader={"Unsubmitted Draft"}
+        messageHeader={"Draft Available"}
+        message={"A draft has been found, would you like to load it?"}
+        positiveBtnText={"Load"}
+        negativeBtnText={"Delete"}
         handlePositive={handlePositive}
         handleNegative={handleNegative}
         onExiting={handleLoadData}
@@ -169,7 +170,7 @@ const FormWizard = ({
       )}
     </Container>
   );
-};
+}
 
 FormWizard.propTypes = {
   formComponents: PropTypes.object.isRequired,
@@ -180,5 +181,3 @@ FormWizard.propTypes = {
   successMessage: PropTypes.string.isRequired,
   successMessageComponent: PropTypes.string.isRequired
 };
-
-export default FormWizard;

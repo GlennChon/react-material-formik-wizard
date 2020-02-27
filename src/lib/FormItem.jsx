@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 
 // input components
 import { FormControl } from "@material-ui/core";
-import TextInput from "./components/inputs/textInput";
-import TextAreaInput from "./components/inputs/textAreaInput";
-import DynamicTextInput from "./components/inputs/DynamicTextInput";
-import SelectInput from "./components/inputs/selectInput";
-import CheckboxInput from "./components/inputs/CheckboxInput";
+import TextInput from "./inputs/textInput";
+import TextAreaInput from "./inputs/textAreaInput";
+import DynamicTextInput from "./inputs/DynamicTextInput";
+import SelectInput from "./inputs/selectInput";
+import CheckboxInput from "./inputs/CheckboxInput";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -37,31 +37,40 @@ const FormInput = props => {
       return TextInput(props);
   }
 };
-const FormItem = ({ error, touched, variant = "outlined", ...props }) => {
+
+export const FormItem = ({
+  error,
+  touched,
+  variant = "outlined",
+  ...props
+}) => {
   const [field, meta] = useField(props);
   const classes = useStyles();
   return (
-    <FormControl
-      fullWidth={true}
-      variant={variant}
-      className={classes.formControl}
-      error={!!(meta.error !== undefined && meta.touched)}
-    >
-      {/* touched must be a boolean for props and changed to string within individual inputs */}
-      {/* Custom inputs in the future may read as boolean, dynamicInputs currently needs this as boolean */}
-      <FormInput
-        id={`${props.name}-${props.type}`}
-        error={!!(meta.error !== undefined && meta.touched)}
-        label={props.label}
-        helpertext={meta.error ? meta.error : ""}
-        touched={meta.touched}
-        value={field.value}
+    <>
+      <FormControl
+        fullWidth={true}
         variant={variant}
-        {...props}
-      />
-    </FormControl>
+        className={classes.formControl}
+        error={!!(meta.error !== undefined && meta.touched)}
+      >
+        {/* touched must be a boolean for props and changed to string within individual inputs */}
+        {/* Custom inputs in the future may read as boolean, dynamicInputs currently needs this as boolean */}
+        <FormInput
+          id={`${props.name}-${props.type}`}
+          error={!!(meta.error !== undefined && meta.touched)}
+          label={props.label}
+          helpertext={meta.error ? meta.error : ""}
+          touched={meta.touched}
+          value={field.value}
+          variant={variant}
+          {...props}
+        />
+      </FormControl>
+    </>
   );
 };
+
 FormItem.propTypes = {
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -71,4 +80,3 @@ FormItem.propTypes = {
   touched: PropTypes.object.isRequired,
   variant: PropTypes.string.isRequired
 };
-export default FormItem;

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-alert */
 import React from "react";
 import { FormWizard } from "react-material-formik-wizard";
 
@@ -7,7 +9,7 @@ import DetailStep from "./steps/DetailStep";
 import DisplayStep from "./steps/DisplayStep";
 import Review from "./steps/Review";
 
-const App = () => {
+function App() {
   const steps = [
     {
       component: RecipeStep,
@@ -50,6 +52,6 @@ const App = () => {
       />
     </React.Fragment>
   );
-};
+}
 
 export default App;
