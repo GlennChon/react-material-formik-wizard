@@ -47,27 +47,25 @@ export const FormItem = ({
   const [field, meta] = useField(props);
   const classes = useStyles();
   return (
-    <>
-      <FormControl
-        fullWidth={true}
-        variant={variant}
-        className={classes.formControl}
+    <FormControl
+      fullWidth={true}
+      variant={variant}
+      className={classes.formControl}
+      error={!!(meta.error !== undefined && meta.touched)}
+    >
+      {/* touched must be a boolean for props and changed to string within individual inputs */}
+      {/* Custom inputs in the future may read as boolean, dynamicInputs currently needs this as boolean */}
+      <FormInput
+        id={`${props.name}-${props.type}`}
         error={!!(meta.error !== undefined && meta.touched)}
-      >
-        {/* touched must be a boolean for props and changed to string within individual inputs */}
-        {/* Custom inputs in the future may read as boolean, dynamicInputs currently needs this as boolean */}
-        <FormInput
-          id={`${props.name}-${props.type}`}
-          error={!!(meta.error !== undefined && meta.touched)}
-          label={props.label}
-          helpertext={meta.error ? meta.error : ""}
-          touched={meta.touched}
-          value={field.value}
-          variant={variant}
-          {...props}
-        />
-      </FormControl>
-    </>
+        label={props.label}
+        helpertext={meta.error ? meta.error : ""}
+        touched={meta.touched}
+        value={field.value}
+        variant={variant}
+        {...props}
+      />
+    </FormControl>
   );
 };
 
