@@ -15,7 +15,8 @@ npm install --save react-material-formik-wizard
 ### FormItem
 
 Input component wrapper.
-Choose from the following options for the **_type_** property: "checkbox", "select", "dynamictext", "textarea", "text" **_default is text_**
+Choose from the following options for the **_type_** property:
+"checkbox", "select", "dynamictext", "textarea", "text" **_default is text_**
 
 **Props**
 
@@ -33,8 +34,10 @@ options: PropTypes.array // for select and checkbox only
 value: // PropType is string or array of objects
 ```
 
+material-ui variant is optional, default is set to "outlined"
+
 _Select_
-Options properties:
+Options properties example:
 
 ```
 options={[
@@ -47,7 +50,7 @@ options={[
 ```
 
 _CheckBox_
-Options properties:
+Options properties example:
 
 ```
  options={[
@@ -62,6 +65,79 @@ Options properties:
 ```
 
 ### FormWizard
+
+Properties:
+
+```
+formComponents: PropTypes.object.isRequired,
+doSubmit: PropTypes.func.isRequired,
+displayProgress: PropTypes.bool.isRequired,
+successTitle: PropTypes.string.isRequired,
+successTitleComponent: PropTypes.string.isRequired,
+successMessage: PropTypes.string.isRequired,
+successMessageComponent: PropTypes.string.isRequired
+```
+
+Create individual forms using formik, import each form into desired page, then set up an array of form objects shown below.
+Usage example:
+
+```
+import React from "react";
+import { FormWizard } from "react-material-formik-wizard";
+
+import RecipeStep from "./steps/RecipeStep";
+import AboutStep from "./steps/AboutStep";
+import DetailStep from "./steps/DetailStep";
+import DisplayStep from "./steps/DisplayStep";
+import Review from "./steps/Review";
+
+function App() {
+  const steps = [
+    {
+      component: RecipeStep,
+      title: "Recipe"
+    },
+    {
+      component: AboutStep,
+      title: "About"
+    },
+    {
+      component: DetailStep,
+      title: "Details"
+    },
+    {
+      component: DisplayStep,
+      title: "Display"
+    },
+    {
+      component: Review,
+      title: "Review"
+    }
+  ];
+
+  const doSubmit = values => {
+    alert("submitting: " + JSON.stringify(values));
+    console.log("submitting valuess", values);
+  };
+
+  return (
+    <React.Fragment>
+      <FormWizard
+        displayProgress={true}
+        formComponents={steps}
+        doSubmit={doSubmit}
+        successTitle={"Success"}
+        successTitleComponent={"h1"}
+        successMessage={"Your recipe has been submitted"}
+        successMessageComponent={"h5"}
+      />
+    </React.Fragment>
+  );
+}
+
+export default App;
+
+```
 
 ## Example Project
 
