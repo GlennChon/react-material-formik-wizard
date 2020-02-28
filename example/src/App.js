@@ -42,7 +42,6 @@ function App() {
     <React.Fragment>
       <FormWizard
         displayProgress={true}
-        finalReview={true}
         formComponents={steps}
         doSubmit={doSubmit}
         successTitle={"Success"}
