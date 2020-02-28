@@ -1,6 +1,6 @@
 {
   "name": "react-material-formik-wizard",
-  "version": "1.0.01",
+  "version": "1.0.02",
   "description": "Form wizard using Material-ui, and Formik",
   "author": "GlennChon",
   "license": "MIT",

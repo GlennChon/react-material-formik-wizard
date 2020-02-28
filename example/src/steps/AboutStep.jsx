@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { Formik } from "formik";
 import { Button, Grid, Typography } from "@material-ui/core";
 import * as Yup from "yup";
 
-//Inputs
+// Inputs
 import { FormItem } from "react-material-formik-wizard";
 
 const AboutSchema = Yup.object().shape({

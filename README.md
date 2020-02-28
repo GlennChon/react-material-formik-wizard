@@ -14,8 +14,8 @@ npm install --save react-material-formik-wizard
 
 ### FormItem
 
-Input component wrapper.  
-Choose from the following options: "checkbox", "select", "dynamictext", "textarea", "text" (default)
+Input component wrapper.
+Choose from the following options for the **_type_** property: "checkbox", "select", "dynamictext", "textarea", "text" **_default is text_**
 
 **Props**
 
@@ -30,6 +30,35 @@ onChange: PropTypes.func.isRequired,
 onBlur: PropTypes.func.isRequired,
 placeHolder: PropTypes.string,
 options: PropTypes.array // for select and checkbox only
+value: // PropType is string or array of objects
+```
+
+_Select_
+Options properties:
+
+```
+options={[
+{ label: "Condiment", value: "Condiment" },
+{ label: "Dip", value: "Dip" },
+{ label: "Sauce", value: "Sauce" },
+{ label: "Marinade", value: "Marinade" },
+{ label: "Other", value: "Other" }
+]}
+```
+
+_CheckBox_
+Options properties:
+
+```
+ options={[
+  { id: "bitter", label: "Bitter" },
+  { id: "numbing", label: "Numbing" },
+  { id: "salty", label: "Salty" },
+  { id: "sour", label: "Sour" },
+  { id: "spicy", label: "Spicy" },
+  { id: "sweet", label: "Sweet" },
+  { id: "umami", label: "Umami" }
+]}
 ```
 
 ### FormWizard
