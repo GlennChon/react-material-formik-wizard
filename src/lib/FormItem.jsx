@@ -39,8 +39,10 @@ const FormInput = props => {
 };
 
 export const FormItem = ({
+  id,
   error,
   touched,
+  label,
   variant = "outlined",
   ...props
 }) => {
@@ -56,9 +58,9 @@ export const FormItem = ({
       {/* touched must be a boolean for props and changed to string within individual inputs */}
       {/* Custom inputs in the future may read as boolean, dynamicInputs currently needs this as boolean */}
       <FormInput
-        id={`${props.name}-${props.type}`}
+        id={id}
         error={!!(meta.error !== undefined && meta.touched)}
-        label={props.label}
+        label={label}
         helpertext={meta.error ? meta.error : ""}
         touched={meta.touched}
         value={field.value}
@@ -76,5 +78,9 @@ FormItem.propTypes = {
   name: PropTypes.string.isRequired,
   error: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
-  variant: PropTypes.string.isRequired
+  variant: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  placeHolder: PropTypes.string,
+  options: PropTypes.array // for select and checkbox only
 };
