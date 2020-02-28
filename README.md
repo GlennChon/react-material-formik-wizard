@@ -141,22 +141,25 @@ export default App;
 
 ## Example Project
 
-To run the example proect for to see how it is used.
+To run the example project to see how it is used.
 
 ```bash
 git clone https://github.com/GlennChon/react-material-formik-wizard.git
 ```
 
-Move into the cloned directory's example folder and install the dependencies
+Move into the cloned directory's example folder and install the dependencies and run to package
 
 ```bash
-cd react-material-formik-wizard/example
+cd react-material-formik-wizard
 npm install
+npm start
 ```
 
-Start the project
+In a new terminal, install example dependencies and start the project.
 
 ```bash
+cd ./example
+npm install
 npm start
 ```
 
