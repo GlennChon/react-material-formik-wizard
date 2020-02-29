@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { Form } from "react-bootstrap";
 import {
   FormGroup,
   FormLabel,
@@ -20,7 +19,7 @@ const CheckboxInput = ({
   const [values, setValues] = useState([]);
 
   useEffect(() => {
-    setValues(value ? value : []);
+    setValues(value || []);
   }, []);
 
   const handleChange = checkName => e => {
@@ -32,7 +31,6 @@ const CheckboxInput = ({
       tmpArray.splice(idx, 1);
     }
     setValues(tmpArray);
-    //setFieldTouched(props.name);
     setFieldValue(props.name, tmpArray).then(() => {
       validateField(props.name);
     });
@@ -56,29 +54,10 @@ const CheckboxInput = ({
           />
         ))}
       </FormGroup>
-      <FormHelperText>{props.helperText}</FormHelperText>
+      <FormHelperText>{props.helpertext}</FormHelperText>
     </React.Fragment>
   );
 };
-
-/*
- <React.Fragment>
-      <br />
-      {options.map((option, key) => (
-        <Form.Check id={option.id} inline type="checkbox" key={key}>
-          <Form.Check.Input
-            onChange={e => {
-              handleChange(e);
-            }}
-            checked={values.includes(option.id)}
-          />
-          <Form.Check.Label>{option.label}</Form.Check.Label>
-          <Form.Control.Feedback type="invalid">
-            error message here
-          </Form.Control.Feedback>
-        </Form.Check>
-      ))}
-    </React.Fragment>*/
 CheckboxInput.propTypes = {
   type: "text",
   label: PropTypes.string.isRequired,
@@ -95,7 +74,9 @@ CheckboxInput.propTypes = {
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       label: PropTypes.string
     })
-  )
+  ),
+  helpertext: PropTypes.string,
+  handleBlur: PropTypes.func.isRequired
 };
 
 export default CheckboxInput;

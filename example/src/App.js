@@ -40,15 +40,17 @@ function App() {
 
   return (
     <React.Fragment>
-      <FormWizard
-        displayProgress={true}
-        formComponents={steps}
-        doSubmit={doSubmit}
-        successTitle={"Success"}
-        successTitleComponent={"h1"}
-        successMessage={"Your recipe has been submitted"}
-        successMessageComponent={"h5"}
-      />
+      <main>
+        <FormWizard
+          displayProgress={true}
+          formComponents={steps}
+          doSubmit={doSubmit}
+          successTitle={"Success"}
+          successTitleComponent={"h1"}
+          successMessage={"Your recipe has been submitted"}
+          successMessageComponent={"h5"}
+        />
+      </main>
     </React.Fragment>
   );
 }

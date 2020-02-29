@@ -1,4 +1,3 @@
-//codesandbox.io/s/yqlz84rnyv
 import React from "react";
 import { TextField } from "@material-ui/core";
 import PropTypes from "prop-types";

@@ -20,7 +20,7 @@ import { Add, Clear, Done, MoreHoriz } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import { reach } from "yup";
 
-//TODO: input and listbox into separate individual components
+// TODO: input and listbox into separate individual components
 const useStyles = makeStyles(theme => ({
   divider: {
     color: "black",
@@ -81,7 +81,7 @@ const DynamicTextInput = ({
     handleOptionsClose();
     setIsEdit(true);
     setIsDisabled(false);
-    //index of clicked list item
+    // index of clicked list item
     setCurrentIndex(index);
     setCurrentInputValue(value[index].value);
     setFieldError(props.name, undefined);
@@ -121,23 +121,8 @@ const DynamicTextInput = ({
       });
   };
 
-  // // validation on enter key press
-  // const validateEnterInput = e => {
-  //   let nestedSchema = reach(schema, `${props.name}[].value`);
-  //   console.log("validate enter input");
-  //   nestedSchema
-  //     .validate(e.target.value)
-  //     .then(() => {
-  //       setIsDisabled(false);
-  //     })
-  //     .catch(() => {
-  //       setIsDisabled(true);
-  //     });
-  // };
-
   const handleKeyPress = e => {
     if (e.target.name === props.name && e.key === "Enter") {
-      //validateEnterInput(e);
       if (!isDisabled && touched) {
         handleInputSave(e);
       } else {
@@ -291,7 +276,10 @@ DynamicTextInput.propTypes = {
   error: PropTypes.object.isRequired,
   value: PropTypes.array.isRequired,
   touched: PropTypes.bool.isRequired,
-  placeholder: PropTypes.string
+  handleBlur: PropTypes.func.isRequired,
+  variant: PropTypes.string,
+  placeholder: PropTypes.string,
+  helpertext: PropTypes.string
 };
 
 export default DynamicTextInput;
