@@ -165,8 +165,6 @@ npm install
 npm start
 ```
 
-Navigate into React
-
 ## License
 
 MIT © [GlennChon](https://github.com/GlennChon)
