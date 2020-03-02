@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/v/react-material-formik-wizard.svg)](https://www.npmjs.com/package/react-material-formik-wizard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-> Form Wizard using Material-ui, and Formik
+Form Wizard using Material-ui, and Formik
 
 ![Mobile & Desktop Sample Image](images/example.png)
 
@@ -17,7 +17,27 @@ npm install --save react-material-formik-wizard
 ### FormItem
 
 Input component wrapper.
+
+```
+import {FormItem} from 'react-material-formik-wizard'
+
+...
+<FormItem
+  type="text"
+  name="title"
+  label="Title"
+  placeholder="Title"
+  onChange={handleChange}
+  onBlur={handleBlur}
+  value={values.title}
+  error={errors.title}
+  touched={touched.title}
+/>
+...
+```
+
 Choose from the following options for the **_type_** property:
+
 "checkbox", "select", "dynamictext", "textarea", "text" **_default is text_**
 
 **Props**
@@ -42,28 +62,52 @@ _Select_
 Options properties example:
 
 ```
-options={[
-{ label: "Condiment", value: "Condiment" },
-{ label: "Dip", value: "Dip" },
-{ label: "Sauce", value: "Sauce" },
-{ label: "Marinade", value: "Marinade" },
-{ label: "Other", value: "Other" }
-]}
+<FormItem
+  id="sauce_type"
+  name="sauce_type"
+  type="select"
+  label="Sauce Type"
+  options={[
+    { label: "Condiment", value: "Condiment" },
+    { label: "Dip", value: "Dip" },
+    { label: "Sauce", value: "Sauce" },
+    { label: "Marinade", value: "Marinade" },
+    { label: "Other", value: "Other" }
+  ]}
+  onBlur={handleBlur}
+  onChange={handleChange}
+  value={values.sauce_type}
+  error={errors.sauce_type}
+  touched={touched.sauce_type}
+/>
 ```
 
 _CheckBox_
 Options properties example:
 
 ```
- options={[
-  { id: "bitter", label: "Bitter" },
-  { id: "numbing", label: "Numbing" },
-  { id: "salty", label: "Salty" },
-  { id: "sour", label: "Sour" },
-  { id: "spicy", label: "Spicy" },
-  { id: "sweet", label: "Sweet" },
-  { id: "umami", label: "Umami" }
-]}
+<FormItem
+  id="taste_profile"
+  name="taste_profile"
+  type="checkbox"
+  label="Taste Profile"
+  options={[
+    { id: "bitter", label: "Bitter" },
+    { id: "numbing", label: "Numbing" },
+    { id: "salty", label: "Salty" },
+    { id: "sour", label: "Sour" },
+    { id: "spicy", label: "Spicy" },
+    { id: "sweet", label: "Sweet" },
+    { id: "umami", label: "Umami" }
+  ]}
+  onBlur={handleBlur}
+  validateField={validateField}
+  setFieldValue={setFieldValue}
+  setFieldTouched={setFieldTouched}
+  value={values.taste_profile}
+  error={errors.taste_profile}
+  touched={touched.taste_profile}
+/>
 ```
 
 ### FormWizard
