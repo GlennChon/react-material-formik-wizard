@@ -11,18 +11,18 @@ import ResponsiveCard from "./wizard/ResponsiveCard";
 import PropTypes from "prop-types";
 // TODO: Maybe implement a prompt when user navigates away from unsaved form?
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   formContainer: {
     margin: "0 auto",
     padding: "0",
     [theme.breakpoints.up("xs")]: {
       margin: "0 auto",
-      width: "100%"
+      width: "100%",
     },
     [theme.breakpoints.up("md")]: {},
     [theme.breakpoints.up("lg")]: {},
-    [theme.breakpoints.up("xl")]: {}
-  }
+    [theme.breakpoints.up("xl")]: {},
+  },
 }));
 
 export function FormWizard({
@@ -32,7 +32,7 @@ export function FormWizard({
   successTitle,
   successTitleComponent,
   successMessage,
-  successMessageComponent
+  successMessageComponent,
 }) {
   // form
   const [formState, setFormState] = useState({});
@@ -69,8 +69,8 @@ export function FormWizard({
     let formDraft = JSON.stringify([currentStep, formState]);
     sessionStorage.setItem("recipe_draft", formDraft);
   };
-  const next = values => {
-    setFormState(prevState => {
+  const next = (values) => {
+    setFormState((prevState) => {
       return { ...prevState, ...values };
     });
 
@@ -79,7 +79,7 @@ export function FormWizard({
 
   const back = (e, values) => {
     e.preventDefault();
-    setFormState(prevState => {
+    setFormState((prevState) => {
       return { ...prevState, ...values };
     });
     return setCurrentStep(currentStep - 1);
@@ -129,13 +129,13 @@ export function FormWizard({
       next: next,
       back: back,
       values: formState,
-      handleSubmit: handleSubmit
+      handleSubmit: handleSubmit,
     };
 
     return (
       <Grid container direction={"column"} spacing={3}>
         {React.createElement(formComponents[currentStep].component, {
-          ...stepProps
+          ...stepProps,
         })}
       </Grid>
     );
@@ -173,11 +173,11 @@ export function FormWizard({
 }
 
 FormWizard.propTypes = {
-  formComponents: PropTypes.object.isRequired,
+  formComponents: PropTypes.array.isRequired,
   doSubmit: PropTypes.func.isRequired,
   displayProgress: PropTypes.bool.isRequired,
   successTitle: PropTypes.string.isRequired,
   successTitleComponent: PropTypes.string.isRequired,
   successMessage: PropTypes.string.isRequired,
-  successMessageComponent: PropTypes.string.isRequired
+  successMessageComponent: PropTypes.string.isRequired,
 };
