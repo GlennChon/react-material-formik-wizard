@@ -587,7 +587,7 @@ function FormWizard(_ref) {
 }
 
 FormWizard.propTypes = {
-  formComponents: PropTypes.object.isRequired,
+  formComponents: PropTypes.array.isRequired,
   doSubmit: PropTypes.func.isRequired,
   displayProgress: PropTypes.bool.isRequired,
   successTitle: PropTypes.string.isRequired,
