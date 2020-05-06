@@ -9,6 +9,9 @@ import {
 import PropTypes from "prop-types";
 
 const CheckboxInput = ({
+  error,
+  touched,
+  helpertext,
   options,
   setFieldValue,
   setFieldTouched,
@@ -31,30 +34,35 @@ const CheckboxInput = ({
       tmpArray.splice(idx, 1);
     }
     setValues(tmpArray);
+    setFieldTouched(props.name, true);
     setFieldValue(props.name, tmpArray).then(() => {
       validateField(props.name);
     });
   };
   return (
     <React.Fragment>
-      <FormLabel>{props.label}</FormLabel>
+      <FormLabel component="legend">{props.label}</FormLabel>
       <FormGroup row>
         {options.map((option, key) => (
           <FormControlLabel
             key={key}
             control={
               <Checkbox
+                name={option.id}
                 checked={values.includes(option.id)}
                 onChange={handleChange(option.id)}
+                aria-label={option.label + " Checkbox"}
                 value={option.id}
                 onBlur={props.handleBlur}
+                touched={touched.toString()}
+                helperText={error ? helpertext : ""}
               />
             }
             label={option.label}
           />
         ))}
       </FormGroup>
-      <FormHelperText>{props.helpertext}</FormHelperText>
+      {error && <FormHelperText>{helpertext}</FormHelperText>}
     </React.Fragment>
   );
 };
