@@ -39,7 +39,7 @@ TextInput.propTypes = {
   error: PropTypes.bool.isRequired,
   touched: PropTypes.object.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  autoComplete: PropTypes.oneOfType(["on", "off", PropTypes.string]),
+  autoComplete: PropTypes.oneOf(["on", "off"]),
   helpertext: PropTypes.string,
   placeholder: PropTypes.string
 };
