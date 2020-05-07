@@ -172,7 +172,7 @@ function useWindowSize() {
     return function () {
       return window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty array ensures that effect is only run on mount and unmount
+  }, []);
 
   return windowSize;
 }
@@ -301,7 +301,7 @@ var ProgressBar = function ProgressBar(_ref) {
 };
 
 ProgressBar.propTypes = {
-  steps: PropTypes.object.isRequired,
+  steps: PropTypes.array.isRequired,
   currentStep: PropTypes.number.isRequired
 };
 
@@ -320,7 +320,7 @@ function ChoiceDialog(_ref) {
     _extends({}, props, {
       "aria-labelledby": "draft loader",
       "aria-describedby": "option to load existing draft",
-      centered: true
+      centered: "true"
     }),
     React.createElement(
       DialogTitle,
@@ -333,16 +333,12 @@ function ChoiceDialog(_ref) {
       React.createElement(
         DialogContentText,
         { id: "dialog-content-text" },
-        React.createElement(
-          "h3",
-          null,
-          messageHeader
-        ),
-        React.createElement(
-          "p",
-          null,
-          message
-        )
+        messageHeader
+      ),
+      React.createElement(
+        DialogContentText,
+        { id: "dialog-content-text" },
+        message
       )
     ),
     React.createElement(
@@ -355,7 +351,7 @@ function ChoiceDialog(_ref) {
       ),
       React.createElement(
         Button,
-        { color: "primary", autofocus: true, onClick: handlePositive },
+        { color: "primary", autoFocus: true, onClick: handlePositive },
         positiveBtnText
       )
     )
@@ -595,10 +591,9 @@ var TextInput = function TextInput(_ref) {
       helpertext = _ref.helpertext,
       _ref$autoComplete = _ref.autoComplete,
       autoComplete = _ref$autoComplete === undefined ? "off" : _ref$autoComplete,
-      value = _ref.value,
       onChange = _ref.onChange,
       touched = _ref.touched,
-      rest = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "value", "onChange", "touched"]);
+      props = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "onChange", "touched"]);
 
   return React.createElement(
     React.Fragment,
@@ -610,9 +605,8 @@ var TextInput = function TextInput(_ref) {
       "aria-label": label + " Text Input",
       helperText: error ? helpertext : "",
       onChange: onChange,
-      value: value,
       touched: touched.toString()
-    }, rest))
+    }, props))
   );
 };
 
@@ -626,7 +620,7 @@ TextInput.propTypes = {
   error: PropTypes.bool.isRequired,
   touched: PropTypes.object.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  autoComplete: PropTypes.oneOfType(["on", "off", PropTypes.string]),
+  autoComplete: PropTypes.oneOf(["on", "off"]),
   helpertext: PropTypes.string,
   placeholder: PropTypes.string
 };
@@ -638,7 +632,7 @@ var TextAreaInput = function TextAreaInput(_ref) {
       _ref$autoComplete = _ref.autoComplete,
       autoComplete = _ref$autoComplete === undefined ? "off" : _ref$autoComplete,
       touched = _ref.touched,
-      rest = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "touched"]);
+      props = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "touched"]);
 
   return React.createElement(
     React.Fragment,
@@ -652,7 +646,7 @@ var TextAreaInput = function TextAreaInput(_ref) {
       "aria-label": label + " Text Input",
       helperText: error ? helpertext : "",
       touched: touched.toString()
-    }, rest))
+    }, props))
   );
 };
 
@@ -1072,12 +1066,15 @@ SelectInput.propTypes = {
 };
 
 var CheckboxInput = function CheckboxInput(_ref) {
-  var options = _ref.options,
+  var error = _ref.error,
+      touched = _ref.touched,
+      helpertext = _ref.helpertext,
+      options = _ref.options,
       setFieldValue = _ref.setFieldValue,
       setFieldTouched = _ref.setFieldTouched,
       validateField = _ref.validateField,
       value = _ref.value,
-      props = objectWithoutProperties(_ref, ["options", "setFieldValue", "setFieldTouched", "validateField", "value"]);
+      props = objectWithoutProperties(_ref, ["error", "touched", "helpertext", "options", "setFieldValue", "setFieldTouched", "validateField", "value"]);
 
   var _useState = useState([]),
       _useState2 = slicedToArray(_useState, 2),
@@ -1098,6 +1095,7 @@ var CheckboxInput = function CheckboxInput(_ref) {
         tmpArray.splice(idx, 1);
       }
       setValues(tmpArray);
+      setFieldTouched(props.name, true);
       setFieldValue(props.name, tmpArray).then(function () {
         validateField(props.name);
       });
@@ -1108,7 +1106,7 @@ var CheckboxInput = function CheckboxInput(_ref) {
     null,
     React.createElement(
       FormLabel,
-      null,
+      { component: "legend" },
       props.label
     ),
     React.createElement(
@@ -1118,19 +1116,23 @@ var CheckboxInput = function CheckboxInput(_ref) {
         return React.createElement(FormControlLabel, {
           key: key,
           control: React.createElement(Checkbox, {
+            name: option.id,
             checked: values.includes(option.id),
             onChange: handleChange(option.id),
+            "aria-label": option.label + " Checkbox",
             value: option.id,
-            onBlur: props.handleBlur
+            onBlur: props.handleBlur,
+            touched: touched.toString(),
+            helpertext: error ? helpertext : ""
           }),
           label: option.label
         });
       })
     ),
-    React.createElement(
+    error && React.createElement(
       FormHelperText,
       null,
-      props.helpertext
+      helpertext
     )
   );
 };
@@ -1197,6 +1199,7 @@ var FormItem = function FormItem(_ref) {
       meta = _useField2[1];
 
   var classes = useStyles$5();
+
   return React.createElement(
     FormControl,
     {
@@ -1217,15 +1220,15 @@ var FormItem = function FormItem(_ref) {
   );
 };
 FormItem.propTypes = {
-  type: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  error: PropTypes.object.isRequired,
-  touched: PropTypes.object.isRequired,
-  variant: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onBlur: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  error: PropTypes.string,
+  // touched: PropTypes.bool, // removed, getting weird error between steps
+  variant: PropTypes.string,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   placeHolder: PropTypes.string,
   options: PropTypes.array // for select and checkbox only
 };
