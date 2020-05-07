@@ -24,22 +24,24 @@ function ChoiceDialog({
       {...props}
       aria-labelledby="draft loader"
       aria-describedby="option to load existing draft"
-      centered
+      centered="true"
     >
       <DialogTitle id="contained-modal-title-vcenter">
         {modalHeader}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="dialog-content-text">
-          <h3>{messageHeader}</h3>
-          <p>{message}</p>
+          {messageHeader}
+        </DialogContentText>
+        <DialogContentText id="dialog-content-text">
+          {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button color="secondary" onClick={handleNegative}>
           {negativeBtnText}
         </Button>
-        <Button color="primary" autofocus onClick={handlePositive}>
+        <Button color="primary" autoFocus onClick={handlePositive}>
           {positiveBtnText}
         </Button>
       </DialogActions>
