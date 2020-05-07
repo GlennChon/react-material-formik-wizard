@@ -1,8 +1,7 @@
 import React from "react";
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import { Box, Grid, Button, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Grid, Button, Typography } from "@material-ui/core";
 
 //Inputs
 import { FormItem } from "react-material-formik-wizard";
