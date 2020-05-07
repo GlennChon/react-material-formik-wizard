@@ -1,5 +1,5 @@
 /* eslint-disable handle-callback-err */
-import React from "react";
+import React, { useEffect } from "react";
 import { useField } from "formik";
 import PropTypes from "prop-types";
 
@@ -48,6 +48,7 @@ export const FormItem = ({
 }) => {
   const [field, meta] = useField(props);
   const classes = useStyles();
+
   return (
     <FormControl
       fullWidth={true}
@@ -72,15 +73,15 @@ export const FormItem = ({
 };
 
 FormItem.propTypes = {
-  type: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  error: PropTypes.object.isRequired,
-  touched: PropTypes.object.isRequired,
-  variant: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onBlur: PropTypes.func.isRequired,
+  type: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  error: PropTypes.string,
+  touched: PropTypes.bool,
+  variant: PropTypes.string,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   placeHolder: PropTypes.string,
   options: PropTypes.array // for select and checkbox only
 };
