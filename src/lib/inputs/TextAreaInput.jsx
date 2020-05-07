@@ -9,7 +9,7 @@ const TextAreaInput = ({
   helpertext,
   autoComplete = "off",
   touched,
-  ...rest
+  ...props
 }) => {
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ const TextAreaInput = ({
         aria-label={label + " Text Input"}
         helperText={error ? helpertext : ""}
         touched={touched.toString()}
-        {...rest}
+        {...props}
       />
     </React.Fragment>
   );
