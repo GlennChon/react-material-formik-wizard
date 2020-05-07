@@ -78,7 +78,7 @@ FormItem.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   error: PropTypes.string,
-  touched: PropTypes.bool,
+  // touched: PropTypes.bool, // removed, getting weird error between steps
   variant: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
