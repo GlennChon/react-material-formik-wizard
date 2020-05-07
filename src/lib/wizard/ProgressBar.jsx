@@ -33,7 +33,7 @@ const ProgressBar = ({ steps, currentStep }) => {
 };
 
 ProgressBar.propTypes = {
-  steps: PropTypes.object.isRequired,
+  steps: PropTypes.array.isRequired,
   currentStep: PropTypes.number.isRequired
 };
 
