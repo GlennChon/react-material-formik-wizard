@@ -55,7 +55,7 @@ const CheckboxInput = ({
                 value={option.id}
                 onBlur={props.handleBlur}
                 touched={touched.toString()}
-                helperText={error ? helpertext : ""}
+                helpertext={error ? helpertext : ""}
               />
             }
             label={option.label}
