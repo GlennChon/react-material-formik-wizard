@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Grid, LinearProgress, Container, Stepper, Step, StepLabel, StepConnector, Dialog, Button, DialogTitle, DialogContent, DialogContentText, DialogActions, Card, TextField, IconButton, Divider, FormHelperText, List, ListItem, ListItemText, ListItemSecondaryAction, InputAdornment, Fade, Menu, MenuItem, Typography, Select, InputLabel, FormGroup, FormLabel, FormControlLabel, Checkbox, FormControl } from '@material-ui/core';
+import { Grid, LinearProgress, Container, Stepper, Step, StepLabel, StepConnector, Dialog, Button, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, IconButton, Divider, FormHelperText, List, ListItem, ListItemText, ListItemSecondaryAction, InputAdornment, Fade, Menu, MenuItem, Typography, Select, InputLabel, FormGroup, FormLabel, FormControlLabel, Checkbox, FormControl } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Add, Clear, Done, MoreHoriz } from '@material-ui/icons';
@@ -358,60 +358,17 @@ function ChoiceDialog(_ref) {
   );
 }
 
-// Google analytics most common device sizes for current saucenerd website:
-// 357x667, 375x812, 414x896, 360x640, 1920x1080
-var useStyles$2 = makeStyles(function (theme) {
-  var _root;
-
-  return {
-    root: (_root = {
-      width: "60%",
-      margin: "0 auto",
-      padding: "5%"
-    }, defineProperty(_root, theme.breakpoints.up("xs"), {
-      width: "100%",
-      border: "none",
-      boxShadow: "none"
-    }), defineProperty(_root, theme.breakpoints.up("md"), {
-      width: "90%",
-      boxShadow: "0 0 10px lightGrey",
-      margin: "0 auto 5%"
-    }), defineProperty(_root, theme.breakpoints.up("lg"), {
-      width: "80%",
-      margin: "5% auto"
-    }), defineProperty(_root, theme.breakpoints.up("xl"), {
-      width: "70%",
-      margin: "25% auto 5%"
-    }), _root)
-  };
-});
-
-var ResponsiveCard = function ResponsiveCard(_ref) {
-  var component = _ref.component;
-
-  var classes = useStyles$2();
-
-  return React.createElement(
-    Card,
-    { className: classes.root },
-    component
-  );
-};
-
 /* eslint-disable no-undef */
 // TODO: Maybe implement a prompt when user navigates away from unsaved form?
 
-var useStyles$3 = makeStyles(function (theme) {
-  var _formContainer;
-
+var useStyles$2 = makeStyles(function (theme) {
   return {
-    formContainer: (_formContainer = {
+    formContainer: defineProperty({
       margin: "0 auto",
       padding: "0"
-    }, defineProperty(_formContainer, theme.breakpoints.up("xs"), {
-      margin: "0 auto",
+    }, theme.breakpoints.up("xs"), {
       width: "100%"
-    }), defineProperty(_formContainer, theme.breakpoints.up("md"), {}), defineProperty(_formContainer, theme.breakpoints.up("lg"), {}), defineProperty(_formContainer, theme.breakpoints.up("xl"), {}), _formContainer)
+    })
   };
 });
 
@@ -455,7 +412,7 @@ function FormWizard(_ref) {
       loadDraftData = _useState10[0],
       setLoadDraftData = _useState10[1];
 
-  var classes = useStyles$3();
+  var classes = useStyles$2();
 
   useEffect(function () {
     checkDraft();
@@ -546,7 +503,7 @@ function FormWizard(_ref) {
 
     return React.createElement(
       Grid,
-      { container: true, direction: "column", spacing: 3 },
+      { container: true, direction: "column" },
       React.createElement(formComponents[currentStep].component, _extends({}, stepProps))
     );
   };
@@ -571,7 +528,7 @@ function FormWizard(_ref) {
       titleComponent: successTitleComponent,
       message: successMessage,
       messageComponent: successMessageComponent
-    }) : React.createElement(ResponsiveCard, { component: displayStep() })
+    }) : displayStep()
   );
 }
 
@@ -666,8 +623,9 @@ TextAreaInput.propTypes = {
 };
 
 // TODO: input and listbox into separate individual components
-var useStyles$4 = makeStyles(function (theme) {
+var useStyles$3 = makeStyles(function (theme) {
   return {
+    root: {},
     divider: {
       color: "black",
       height: 40,
@@ -720,7 +678,7 @@ var DynamicTextInput = function DynamicTextInput(_ref) {
 
   var open = Boolean(anchorEl);
   var inputEl = useRef(null);
-  var classes = useStyles$4();
+  var classes = useStyles$3();
 
   var handleOptionsClick = function handleOptionsClick(e, index) {
     setOptionsMenuIndex(index);
@@ -904,6 +862,7 @@ var DynamicTextInput = function DynamicTextInput(_ref) {
     React.Fragment,
     null,
     React.createElement(TextField, _extends({
+      className: classes.root,
       id: props.id,
       autoComplete: "off",
       "aria-label": props.label + " Input and Edit Field",
@@ -1157,12 +1116,10 @@ CheckboxInput.propTypes = {
 
 /* eslint-disable handle-callback-err */
 
-var useStyles$5 = makeStyles(function (theme) {
+var useStyles$4 = makeStyles(function (theme) {
   return {
     formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-      padding: "0 calc(1% + 6px) 0 0"
+      minWidth: "400px"
     }
   };
 });
@@ -1198,7 +1155,7 @@ var FormItem = function FormItem(_ref) {
       field = _useField2[0],
       meta = _useField2[1];
 
-  var classes = useStyles$5();
+  var classes = useStyles$4();
 
   return React.createElement(
     FormControl,

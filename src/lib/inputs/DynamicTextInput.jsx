@@ -22,6 +22,7 @@ import { reach } from "yup";
 
 // TODO: input and listbox into separate individual components
 const useStyles = makeStyles(theme => ({
+  root: {},
   divider: {
     color: "black",
     height: 40,
@@ -221,6 +222,7 @@ const DynamicTextInput = ({
   return (
     <React.Fragment>
       <TextField
+        className={classes.root}
         id={props.id}
         autoComplete="off"
         aria-label={props.label + " Input and Edit Field"}
