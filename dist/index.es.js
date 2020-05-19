@@ -1119,7 +1119,7 @@ CheckboxInput.propTypes = {
 var useStyles$4 = makeStyles(function (theme) {
   return {
     formControl: {
-      minWidth: "400px"
+      minWidth: "100px"
     }
   };
 });
