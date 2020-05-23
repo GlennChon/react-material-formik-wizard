@@ -557,7 +557,10 @@ var TextInput = function TextInput(_ref) {
       autoComplete = _ref$autoComplete === undefined ? "off" : _ref$autoComplete,
       onChange = _ref.onChange,
       touched = _ref.touched,
-      props = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "onChange", "touched"]);
+      onBlur = _ref.onBlur,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? "" : _ref$value,
+      props = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "onChange", "touched", "onBlur", "value"]);
 
   return React__default.createElement(
     React__default.Fragment,
@@ -569,6 +572,8 @@ var TextInput = function TextInput(_ref) {
       "aria-label": label + " Text Input",
       helperText: error ? helpertext : "",
       onChange: onChange,
+      onBlur: onBlur,
+      value: value,
       touched: touched.toString()
     }, props))
   );

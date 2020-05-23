@@ -9,6 +9,8 @@ const TextInput = ({
   autoComplete = "off",
   onChange,
   touched,
+  onBlur,
+  value = "",
   ...props
 }) => {
   return (
@@ -20,6 +22,8 @@ const TextInput = ({
         aria-label={label + " Text Input"}
         helperText={error ? helpertext : ""}
         onChange={onChange}
+        onBlur={onBlur}
+        value={value}
         touched={touched.toString()}
         {...props}
       />

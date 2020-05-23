@@ -23,7 +23,6 @@ const DisplayStep = ({ back, next, values = null }) => {
   useEffect(() => {
     mapValues();
   }, []);
-
   const mapValues = () => {
     values.title = values.title ? values.title : "";
     values.img_url = values.img_url ? values.img_url : "";
@@ -35,9 +34,9 @@ const DisplayStep = ({ back, next, values = null }) => {
       <Formik
         enableReinitialize={true}
         initialValues={{
-          title: values.title,
-          img_url: values.img_url,
-          author: values.author
+          title: values.title ? values.title : "",
+          img_url: values.img_url ? values.img_url : "",
+          author: values.author ? values.author : "Unregistered"
         }}
         validationSchema={DisplaySchema}
         onSubmit={values => {
@@ -86,7 +85,6 @@ const DisplayStep = ({ back, next, values = null }) => {
                   error={errors.author}
                   touched={touched.author}
                   InputProps={{ readOnly: true }}
-                  defaultValue="Unregistered"
                 />
               </Grid>
               <Grid item xs={12}>

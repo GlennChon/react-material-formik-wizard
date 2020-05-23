@@ -25,8 +25,8 @@ const DetailStep = ({ next, back, values = null }) => {
     mapValues();
   }, []);
   const mapValues = () => {
-    values.amount = values.amount ? values.amount : [];
-    values.expiration = values.expiration ? values.expiration : [];
+    values.amount = values.amount ? values.amount : "";
+    values.expiration = values.expiration ? values.expiration : "";
     values.allergies = values.allergies ? values.allergies : [];
   };
   return (
