@@ -3,7 +3,7 @@
   "homepage": "https://GlennChon.github.io/react-material-formik-wizard",
   "version": "0.0.0",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "dependencies": {
     "prop-types": "file:../node_modules/prop-types",
     "react": "file:../node_modules/react",
