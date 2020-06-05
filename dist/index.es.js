@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Grid, LinearProgress, Container, Stepper, Step, StepLabel, StepConnector, Dialog, Button, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, IconButton, Divider, FormHelperText, List, ListItem, ListItemText, ListItemSecondaryAction, InputAdornment, Fade, Menu, MenuItem, Typography, Select, InputLabel, FormGroup, FormLabel, FormControlLabel, Checkbox, FormControl } from '@material-ui/core';
+import { Grid, LinearProgress, Container, Stepper, Step, StepLabel, StepConnector, Dialog, Button, DialogTitle, DialogContent, DialogContentText, DialogActions, Input, TextField, IconButton, Divider, FormHelperText, List, ListItem, ListItemText, ListItemSecondaryAction, InputAdornment, Fade, Menu, MenuItem, Typography, Select, InputLabel, FormGroup, FormLabel, FormControlLabel, Checkbox, FormControl } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Add, Clear, Done, MoreHoriz } from '@material-ui/icons';
@@ -540,6 +540,51 @@ FormWizard.propTypes = {
   successTitleComponent: PropTypes.string.isRequired,
   successMessage: PropTypes.string.isRequired,
   successMessageComponent: PropTypes.string.isRequired
+};
+
+var GenericInput = function GenericInput(_ref) {
+  var label = _ref.label,
+      error = _ref.error,
+      helpertext = _ref.helpertext,
+      _ref$autoComplete = _ref.autoComplete,
+      autoComplete = _ref$autoComplete === undefined ? "off" : _ref$autoComplete,
+      onChange = _ref.onChange,
+      touched = _ref.touched,
+      onBlur = _ref.onBlur,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? "" : _ref$value,
+      props = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "onChange", "touched", "onBlur", "value"]);
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(Input, _extends({
+      label: label,
+      error: error,
+      autoComplete: autoComplete,
+      "aria-label": label + " Text Input",
+      helperText: error ? helpertext : "",
+      onChange: onChange,
+      onBlur: onBlur,
+      value: value,
+      touched: touched.toString()
+    }, props))
+  );
+};
+
+GenericInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
+  touched: PropTypes.object.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  autoComplete: PropTypes.oneOf(["on", "off"]),
+  helpertext: PropTypes.string,
+  placeholder: PropTypes.string
 };
 
 var TextInput = function TextInput(_ref) {
@@ -1142,7 +1187,7 @@ var FormInput = function FormInput(props) {
     case "text":
       return TextInput(props);
     default:
-      return TextInput(props);
+      return GenericInput(props);
   }
 };
 

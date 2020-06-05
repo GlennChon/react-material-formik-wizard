@@ -1,11 +1,12 @@
 /* eslint-disable handle-callback-err */
 import React, { useEffect } from "react";
-import { useField } from "formik";
+import { useField, Field } from "formik";
 import PropTypes from "prop-types";
 
 // input components
 import { FormControl } from "@material-ui/core";
-import TextInput from "./inputs/textInput";
+import GenericInput from "./inputs/GenericInput";
+import TextInput from "./inputs/TextInput";
 import TextAreaInput from "./inputs/textAreaInput";
 import DynamicTextInput from "./inputs/DynamicTextInput";
 import SelectInput from "./inputs/selectInput";
@@ -32,7 +33,7 @@ const FormInput = props => {
     case "text":
       return TextInput(props);
     default:
-      return TextInput(props);
+      return GenericInput(props);
   }
 };
 

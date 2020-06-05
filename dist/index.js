@@ -549,6 +549,51 @@ FormWizard.propTypes = {
   successMessageComponent: PropTypes.string.isRequired
 };
 
+var GenericInput = function GenericInput(_ref) {
+  var label = _ref.label,
+      error = _ref.error,
+      helpertext = _ref.helpertext,
+      _ref$autoComplete = _ref.autoComplete,
+      autoComplete = _ref$autoComplete === undefined ? "off" : _ref$autoComplete,
+      onChange = _ref.onChange,
+      touched = _ref.touched,
+      onBlur = _ref.onBlur,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? "" : _ref$value,
+      props = objectWithoutProperties(_ref, ["label", "error", "helpertext", "autoComplete", "onChange", "touched", "onBlur", "value"]);
+
+  return React__default.createElement(
+    React__default.Fragment,
+    null,
+    React__default.createElement(core.Input, _extends({
+      label: label,
+      error: error,
+      autoComplete: autoComplete,
+      "aria-label": label + " Text Input",
+      helperText: error ? helpertext : "",
+      onChange: onChange,
+      onBlur: onBlur,
+      value: value,
+      touched: touched.toString()
+    }, props))
+  );
+};
+
+GenericInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
+  touched: PropTypes.object.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  autoComplete: PropTypes.oneOf(["on", "off"]),
+  helpertext: PropTypes.string,
+  placeholder: PropTypes.string
+};
+
 var TextInput = function TextInput(_ref) {
   var label = _ref.label,
       error = _ref.error,
@@ -1149,7 +1194,7 @@ var FormInput = function FormInput(props) {
     case "text":
       return TextInput(props);
     default:
-      return TextInput(props);
+      return GenericInput(props);
   }
 };
 

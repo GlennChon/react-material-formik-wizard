@@ -46,6 +46,7 @@ const RecipeForm = ({ ...props }) => {
     values,
     touched,
     handleSubmit,
+    handleChange,
     handleBlur,
     errors,
     setFieldTouched,
@@ -67,6 +68,7 @@ const RecipeForm = ({ ...props }) => {
               Recipe
             </Typography>
           </Grid>
+
           <Grid item xs={12}>
             <FormItem
               id="ingredients"

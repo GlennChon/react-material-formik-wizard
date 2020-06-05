@@ -115,6 +115,7 @@ const AboutStep = props => {
               >
                 About
               </Typography>
+
               <Grid item xs={12}>
                 <FormItem
                   id="country"
