@@ -31,7 +31,6 @@ const FormInput = props => {
     case "textarea":
       return TextAreaInput(props);
     case "text":
-      return TextInput(props);
     default:
       return TextInput(props);
   }
