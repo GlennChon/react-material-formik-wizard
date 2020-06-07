@@ -1187,7 +1187,7 @@ var FormInput = function FormInput(props) {
     case "text":
       return TextInput(props);
     default:
-      return GenericInput(props);
+      return TextInput(props);
   }
 };
 
