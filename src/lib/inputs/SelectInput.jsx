@@ -34,7 +34,7 @@ const SelectInput = ({
 
   return (
     <React.Fragment>
-      <InputLabel ref={inputLabel} htmlFor={id}>
+      <InputLabel disabled={rest.disabled} ref={inputLabel} htmlFor={id}>
         {label}
       </InputLabel>
       <Select

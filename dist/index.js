@@ -1036,7 +1036,7 @@ var SelectInput = function SelectInput(_ref) {
     null,
     React__default.createElement(
       core.InputLabel,
-      { ref: inputLabel, htmlFor: id },
+      { disabled: rest.disabled, ref: inputLabel, htmlFor: id },
       label
     ),
     React__default.createElement(
@@ -1131,6 +1131,7 @@ var CheckboxInput = function CheckboxInput(_ref) {
       options.map(function (option, key) {
         return React__default.createElement(core.FormControlLabel, {
           key: key,
+          disabled: props.disabled,
           control: React__default.createElement(core.Checkbox, {
             name: option.id,
             checked: values.includes(option.id),

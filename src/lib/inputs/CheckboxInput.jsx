@@ -46,6 +46,7 @@ const CheckboxInput = ({
         {options.map((option, key) => (
           <FormControlLabel
             key={key}
+            disabled={props.disabled}
             control={
               <Checkbox
                 name={option.id}
